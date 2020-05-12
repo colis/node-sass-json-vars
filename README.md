@@ -38,7 +38,7 @@ This module uses the `functions` option of the [JavaScript API](https://sass-lan
 
 ```javascript
 const sass = require('node-sass');
-const sassFunctions = from ('node-sass-json-vars');
+const sassFunctions = require('node-sass-json-vars');
 
 const result = sass.renderSync({
   file: scss_filename,
@@ -75,23 +75,23 @@ node-sass --functions node_modules/node-sass-json-vars/lib/index.js sass/style.s
 #### Webpack
 
 ```javascript
-const sassFunctions = require('node-sass-json-vars');
+import sassFunctions from 'node-sass-json-vars';
 
-module.exports = {
+export default {
 ...
   {
     test: /\.scss$/,
-    use: [{
-        loader: "style-loader"
-    }, {
-        loader: "css-loader"
-    }, {
-        loader: "sass-loader"
+    use: [
+      'style-loader',
+      'css-loader',
+      {
+        loader: "sass-loader",
         options: {
-          functions: sassFunctions
-        }
-    }]
-  }
+          functions: sassFunctions,
+        },
+      },
+    ],
+  },
 ...
 }
 ```
