@@ -1,6 +1,6 @@
 {
   "name": "node-sass-json-vars",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Custom node-sass functions that allow using variables from JSON files.",
   "main": "lib/index.js",
   "scripts": {
