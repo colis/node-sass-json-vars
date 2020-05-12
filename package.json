@@ -1,0 +1,45 @@
+{
+  "name": "node-sass-json-vars",
+  "version": "1.0.0",
+  "description": "Custom node-sass functions that allow using variables from JSON files.",
+  "main": "lib/index.js",
+  "scripts": {
+    "build": "babel src -d lib",
+    "test": "jest",
+    "format": "prettier \"src/*.{js}\" --write",
+    "lint": "eslint \"src/*.{js}\" --quiet"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/colis/node-sass-json-vars.git"
+  },
+  "keywords": [
+    "sass",
+    "node-sass",
+    "json",
+    "functions"
+  ],
+  "author": "Carmine Colicino",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/colis/node-sass-json-vars/issues"
+  },
+  "homepage": "https://github.com/colis/node-sass-json-vars#readme",
+  "dependencies": {
+    "app-root-path": "^3.0.0",
+    "jsonfile": "^6.0.1"
+  },
+  "devDependencies": {
+    "@babel/cli": "^7.8.4",
+    "@babel/core": "^7.9.6",
+    "@babel/preset-env": "^7.9.6",
+    "babel-eslint": "^10.1.0",
+    "babel-plugin-add-module-exports": "^1.0.2",
+    "eslint": "^7.0.0",
+    "eslint-config-prettier": "^6.11.0",
+    "jest": "^26.0.1",
+    "node-sass": "^4.14.1",
+    "prettier": "^2.0.5",
+    "semantic-release": "^17.0.7"
+  }
+}

@@ -1,0 +1,5 @@
+$colors: getMapFromJSON("colors");
+
+body {
+  color: map-get($colors, amaranth);
+}

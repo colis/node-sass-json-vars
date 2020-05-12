@@ -1,0 +1,11 @@
+/__tests__
+/src
+/config
+/.github
+.babelrc
+.editorconfig
+.eslintignore
+.eslintrc.json
+.gitignore
+.prettierrc
+
