@@ -87,7 +87,9 @@ export default {
       {
         loader: "sass-loader",
         options: {
-          functions: sassFunctions,
+          sassOptions: {
+            functions: sassFunctions,
+          },
         },
       },
     ],
