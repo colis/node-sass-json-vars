@@ -14,24 +14,6 @@ npm install --save-dev node-sass-json-vars
 
 _Note: it's recommended to install **node-sass-json-vars** locally project by project._
 
-## Additional Configuration
-
-Create a file named `variables.json` - which contains all the variables that will be used in the stylesheets - and put it in a folder named `config`, e.g.:
-
-```
-.
-├── 404.php
-├── archive.php
-├── composer.json
-├── composer.lock
-├── config
-│   └── variables.json
-├── editor-style.css
-├── footer.php
-├── functions.php
-├── node_modules
-```
-
 ## Usage
 ### [node-sass](https://github.com/sass/node-sass)
 This module uses the `functions` option of the [JavaScript API](https://sass-lang.com/documentation/js-api#functions).
@@ -41,8 +23,9 @@ const sass = require('node-sass');
 const sassFunctions = require('node-sass-json-vars');
 
 const result = sass.renderSync({
-  file: scss_filename,
+  file: 'assets/sass/style.scss',
   functions: sassFunctions,
+  configPath: 'my_folder/my_variables.json', // if not set, it defaults to 'config/variables.json'
   [, options..]
 });
 console.log(result.css.toString());
@@ -51,8 +34,9 @@ console.log(result.css.toString());
 // }
 
 sass.render({
-  file: scss_filename,
+  file: 'assets/sass/style.scss',
   functions: sassFunctions,
+  configPath: 'my_folder/my_variables.json', // if not set, it defaults to 'config/variables.json'
   [, options..]
 }, function(err, result) {
   console.log(result.css.toString());
@@ -60,14 +44,6 @@ sass.render({
   //   color: #E63946;
   // }
 });
-```
-
-### [node-sass](https://github.com/sass/node-sass) command-line interface
-
-To run this module using node-sass CLI, add its installation path to the `--functions` option: 
-
-```sh
-node-sass --functions node_modules/node-sass-json-vars/lib/index.js sass/style.scss style.css
 ```
 
 ### Webpack / [sass-loader](https://github.com/jtangelder/sass-loader)
@@ -89,6 +65,7 @@ export default {
         options: {
           sassOptions: {
             functions: sassFunctions,
+            configPath: 'my_folder/my_variables.json', // if not set, it defaults to 'config/variables.json'
           },
         },
       },
@@ -96,6 +73,30 @@ export default {
   },
 ...
 }
+```
+
+### [node-sass](https://github.com/sass/node-sass) command-line interface
+
+To run this module using node-sass CLI, add its installation path to the `--functions` option: 
+
+```sh
+node-sass --functions node_modules/node-sass-json-vars/lib/index.js assets/sass/style.scss dist/css/style.css
+```
+
+_Note: the node-sass CLI doesn't accept custom options, therefore the `configPath` value can't be passed to the module. As a workaround, you can create a file named `variables.json` - which contains all the variables that will be used in the stylesheets - and put it in a folder named `config`, e.g.:_
+
+```
+.
+├── 404.php
+├── assets
+│   └── sass
+├── composer.json
+├── composer.lock
+├── config
+│   └── variables.json
+├── footer.php
+├── functions.php
+├── node_modules
 ```
 
 ## Functions

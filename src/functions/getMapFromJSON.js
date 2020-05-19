@@ -1,6 +1,5 @@
 import sass from 'node-sass';
-import jsonfile from 'jsonfile';
-import appRoot from 'app-root-path';
+import { loadJSON } from '../helpers';
 
 /**
  * Transform a JSON Object into a SASS Map.
@@ -10,12 +9,16 @@ import appRoot from 'app-root-path';
  */
 export default function getMapFromJSON(key) {
   if (!(key instanceof sass.types.String)) {
-    throw '$key: Expected a string.';
+    throw new Error('$key: Expected a string.');
   }
 
-  const json = jsonfile.readFileSync(`${appRoot}/config/variables.json`);
+  const json = loadJSON(this.options);
 
   const sassVars = json[key.getValue()];
+
+  if (!sassVars) {
+    throw new Error(`"${key.getValue()}" is not a valid key.`);
+  }
 
   const map = new sass.types.Map(Object.keys(sassVars).length);
 
