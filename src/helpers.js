@@ -1,7 +1,7 @@
 import appRoot from 'app-root-path';
 import jsonfile from 'jsonfile';
 
-export const loadJSON = options => {
+export const loadJSON = (options) => {
   const configPath = `${appRoot}/${options.configPath || 'config/variables.json'}`;
   const json = jsonfile.readFileSync(configPath, { throws: false });
 

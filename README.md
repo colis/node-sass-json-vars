@@ -48,12 +48,12 @@ sass.render({
 
 ### Webpack / [sass-loader](https://github.com/jtangelder/sass-loader)
 
-#### Webpack
+#### webpack.config.js
 
 ```javascript
-import sassFunctions from 'node-sass-json-vars';
+const sassFunctions = require('node-sass-json-vars');
 
-export default {
+module.exports = {
 ...
   {
     test: /\.scss$/,
@@ -63,6 +63,7 @@ export default {
       {
         loader: "sass-loader",
         options: {
+          implementation: require('node-sass'),
           sassOptions: {
             functions: sassFunctions,
             configPath: 'my_folder/my_variables.json', // if not set, it defaults to 'config/variables.json'

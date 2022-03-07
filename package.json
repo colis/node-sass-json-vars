@@ -6,8 +6,8 @@
   "scripts": {
     "build": "babel src -d lib",
     "test": "jest",
-    "format": "prettier \"src/*.{js}\" --write",
-    "lint": "eslint \"src/*.{js}\" --quiet"
+    "format": "prettier src/ --write",
+    "lint": "eslint src/ --quiet"
   },
   "repository": {
     "type": "git",
@@ -27,19 +27,20 @@
   "homepage": "https://github.com/colis/node-sass-json-vars#readme",
   "dependencies": {
     "app-root-path": "^3.0.0",
-    "jsonfile": "^6.0.1"
+    "jsonfile": "^6.1.0"
   },
   "devDependencies": {
-    "@babel/cli": "^7.8.4",
-    "@babel/core": "^7.9.6",
-    "@babel/preset-env": "^7.9.6",
-    "babel-eslint": "^10.1.0",
-    "babel-plugin-add-module-exports": "^1.0.2",
-    "eslint": "^7.0.0",
-    "eslint-config-prettier": "^6.11.0",
-    "jest": "^26.0.1",
-    "node-sass": "^4.14.1",
-    "prettier": "^2.0.5",
-    "semantic-release": "^17.0.7"
+    "@babel/cli": "^7.17.6",
+    "@babel/core": "^7.17.5",
+    "@babel/eslint-parser": "^7.17.0",
+    "@babel/preset-env": "^7.16.11",
+    "@semantic-release/git": "^10.0.1",
+    "babel-plugin-add-module-exports": "^1.0.4",
+    "eslint": "^8.10.0",
+    "eslint-config-prettier": "^8.5.0",
+    "jest": "^27.5.1",
+    "node-sass": "^7.0.1",
+    "prettier": "^2.5.1",
+    "semantic-release": "^19.0.2"
   }
 }
