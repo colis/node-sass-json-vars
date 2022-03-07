@@ -86,6 +86,7 @@ node-sass --functions node_modules/node-sass-json-vars/lib/index.js assets/sass/
 
 _Note: the node-sass CLI doesn't accept custom options, therefore the `configPath` value can't be passed to the module. As a workaround, you can create a file named `variables.json` - which contains all the variables that will be used in the stylesheets - and put it in a folder named `config`, e.g.:_
 
+
 ```
 .
 ├── 404.php
