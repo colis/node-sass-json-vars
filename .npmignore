@@ -8,4 +8,4 @@
 .eslintrc.json
 .gitignore
 .prettierrc
-
+.releaserc
