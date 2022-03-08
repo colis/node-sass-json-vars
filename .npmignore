@@ -5,7 +5,7 @@
 .babelrc
 .editorconfig
 .eslintignore
-.eslintrc.json
+.eslintrc
 .gitignore
 .prettierrc
 .releaserc
