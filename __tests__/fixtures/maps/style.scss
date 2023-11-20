@@ -1,4 +1,4 @@
-$colors: getMapFromJSON("colors");
+$colors: getMapFromJSON("colors", "__tests__/fixtures/maps/variables.json");
 
 body {
   color: map-get($colors, amaranth);

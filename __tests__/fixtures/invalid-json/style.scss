@@ -1,1 +1,1 @@
-$colors: getMapFromJSON("colors");
+$colors: getMapFromJSON("colors", "__tests__/fixtures/invalid-json/variables.json");

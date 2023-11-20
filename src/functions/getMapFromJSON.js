@@ -1,31 +1,39 @@
-import sass from 'node-sass';
+import sass from 'sass';
 import { loadJSON } from '../helpers';
 
 /**
  * Transform a JSON Object into a SASS Map.
  *
- * @param {String} key The key of the JSON Object.
- * @return {sass.types.Map}
+ * @param {Object} args Custom function args.
+ * @return {sass.SassMap}
  */
-export default function getMapFromJSON(key) {
-  if (!(key instanceof sass.types.String)) {
-    throw new Error('$key: Expected a string.');
+export default function getMapFromJSON(args) {
+  let json;
+
+  const key = args[0].assertString('key');
+
+  if (args[1].toString() === 'null') {
+    json = loadJSON();
+  } else {
+    json = loadJSON(args[1].assertString('config').toString().replaceAll('"', ''));
   }
 
-  const json = loadJSON(this.options);
-
-  const sassVars = json[key.getValue()];
+  const sassVars = json[key.toString().replaceAll('"', '')];
 
   if (!sassVars) {
-    throw new Error(`"${key.getValue()}" is not a valid key.`);
+    throw new Error(`${key} is not a valid key.`);
   }
 
-  const map = new sass.types.Map(Object.keys(sassVars).length);
+  const contents = new Map();
 
-  Object.entries(sassVars).forEach(([key, value], index) => {
-    map.setKey(index, new sass.types.String(key));
-    map.setValue(index, new sass.types.String(value));
+  Object.entries(sassVars).forEach(([key, value]) => {
+    contents.set(
+      new sass.SassString(key, { quotes: false }),
+      new sass.SassString(value, { quotes: false }),
+    );
   });
+
+  const map = new sass.SassMap(contents);
 
   return map;
 }

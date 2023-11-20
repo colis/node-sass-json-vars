@@ -1,1 +1,1 @@
-$colors: getMapFromJSON("wrongKey");
+$colors: getMapFromJSON("wrongKey", "__tests__/fixtures/maps/variables.json");
