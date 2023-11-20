@@ -19,27 +19,23 @@ _Note: it's recommended to install **node-sass-json-vars** locally project by pr
 This module uses the `functions` option of the [JavaScript API](https://sass-lang.com/documentation/js-api#functions).
 
 ```javascript
-const sass = require('node-sass');
+const sass = require('sass');
 const sassFunctions = require('node-sass-json-vars');
 
-const result = sass.renderSync({
-  file: 'assets/sass/style.scss',
+const result = sass.compile('assets/sass/style.scss', {
   functions: sassFunctions,
-  configPath: 'my_folder/my_variables.json', // if not set, it defaults to 'config/variables.json'
   [, options..]
 });
-console.log(result.css.toString());
+console.log(result.css);
 // body {
 //   color: #E63946;
 // }
 
-sass.render({
-  file: 'assets/sass/style.scss',
+sass.compile('assets/sass/style.scss', {
   functions: sassFunctions,
-  configPath: 'my_folder/my_variables.json', // if not set, it defaults to 'config/variables.json'
   [, options..]
 }, function(err, result) {
-  console.log(result.css.toString());
+  console.log(result.css);
   // body {
   //   color: #E63946;
   // }
@@ -63,10 +59,8 @@ module.exports = {
       {
         loader: "sass-loader",
         options: {
-          implementation: require('node-sass'),
           sassOptions: {
             functions: sassFunctions,
-            configPath: 'my_folder/my_variables.json', // if not set, it defaults to 'config/variables.json'
           },
         },
       },
@@ -102,7 +96,7 @@ _Note: the node-sass CLI doesn't accept custom options, therefore the `configPat
 
 ## Functions
 
-* `getMapFromJSON($key)`: transforms a JSON Object into a SASS Map.
+* `getMapFromJSON($key, $config)`: transforms a JSON Object into a SASS Map.
 
 ### Example
 
